@@ -1,3 +1,4 @@
+%Histogram with averaging filter (masking)
 a=imread('C:\Users\Public\Pictures\Sample Pictures\koala.jpg');
 b=rgb2gray(a);
 [row,col]=size(b);
