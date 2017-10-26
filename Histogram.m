@@ -44,15 +44,3 @@ imtool(imr2);
  
 %q=imfilter(b,3);
 %imshow(q);
-
- 
- 
- 
- 
- 
-    
-    
- 
- 
-    
-
