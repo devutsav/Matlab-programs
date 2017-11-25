@@ -8,7 +8,7 @@ for k=1:256
     count=0;
     for i=1:row
         for j=1:col
-            if k == b(i,j)
+            if k-1 == b(i,j)
                 count=count+1;
             end
         end
