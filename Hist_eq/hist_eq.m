@@ -1,4 +1,4 @@
-a=imread('/home/utsav/b.jpg');
+a=imread('/home/utsav/einstein.jpg');
 l=rgb2gray(a);
 b=rgb2gray(a);
 [row,col]=size(b);
@@ -7,7 +7,7 @@ for k=1:256
     count=0;
     for i=1:row
         for j=1:col
-            if k == b(i,j)
+            if k-1 == b(i,j)
                 count=count+1;
             end
         end
@@ -33,8 +33,13 @@ for i=1:row
          b(i,j)=hout(b(i,j)+1)*255;
     end
 end
-imtool(b);
-imtool(l);
+% imtool(b);
+% imtool(l);
+
+subplot(2,2,1), imshow(l);
+title('Original');
+subplot(2,2,2), imshow(b);
+title('Histogram equalised');
 
 
 
