@@ -1,30 +1,20 @@
-a=imread('/home/utsav/b.png');
-
-b=rgb2gray(a);
-%m = imnoise(M,'salt & pepper',0.5);
+b=imread('/home/utsav/b.jpg');
+b=double(b);
+%b=rgb2gray(a);
+%m = imnoise(b,'salt & pepper',0.5);
 [row,col]=size(b);
 
-arr=zeros(1,256);
-for k=1:256
-    count=0;
-    for i=1:row
-        for j=1:col
-            if k-1 == b(i,j)
-                count=count+1;
-            end
-        end
-    end
-    arr(1,k)=count;
-end
-
- 
 c1=zeros(1,col);
 r1=zeros(row+2,1);
 imr=[c1;b;c1];
 imr2=[r1,imr,r1];
+imr2=double(imr2);
 
 [r,c]=size(imr2);
 imr4=zeros(1,9);
+cz=zeros(1,9);
+[rw,cl]=size(imr4);
+imr5=zeros(r,c);
 for i = 2:r-1
     for j = 2:c-1
         k=1;
@@ -34,8 +24,13 @@ for i = 2:r-1
                 k=k+1;
             end
         end
-       c=sort(imr4);
-       imr2(i,j)=c(1,5);
+       cz=sort(imr4);
+       imr5(i-1,j-1)=cz(1,5);
     end
 end
-imtool(imr2);
+subplot(2,2,1), imshow(uint8(b));
+title('Original image');
+subplot(2,2,2), imshow(uint8(imr5));
+title('Median filtered image');
+x=medfilt2(imr2);
+subplot(2,2,3), imshow(uint8(x));
